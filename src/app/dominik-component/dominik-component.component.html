@@ -5,3 +5,9 @@
 <h2 [class] = "successClass">Bind with []</h2>
 <h2 [class.text-danger]="hasError">Bind by expression (true/false)</h2>
 <h2 [ngClass]="messageClasses"> Bind by ngClass directive</h2>
+
+<!-- Binding of values -->
+<input [id]="myId" type="text" value="PropertyBinding">
+<!-- 2nd option isn't working with boolean values -->
+<input disabled="false" id="{{myId}}" type="text" value="BindWithInterpolation">
+<input [disabled]="isDisabled" type="text" value="Property binding">

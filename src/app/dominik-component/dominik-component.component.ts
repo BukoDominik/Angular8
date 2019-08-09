@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class DominikComponentComponent implements OnInit {
 
   public hasError = true;
-  public successClass = "text-success"
+  public successClass = "text-success";
   public isSpecial = true;
+  public myId = "testIddd";
+  public isDisabled = false;
+
   /**
   * Object to manage adding multiple classes via ngClass directive
   */
