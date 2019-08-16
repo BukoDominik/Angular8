@@ -1,4 +1,5 @@
 <p>dominik-component works!</p>
+<!-- creating new component in consol: ng g c <name>-->
 <input type="text" value="Input">
 <!-- Class binding in angular 8-->
 <h2 class="text-success"> Standard binding</h2>
@@ -11,3 +12,64 @@
 <!-- 2nd option isn't working with boolean values -->
 <input disabled="false" id="{{myId}}" type="text" value="BindWithInterpolation">
 <input [disabled]="isDisabled" type="text" value="Property binding">
+
+<!-- Binding of styles -->
+<h2 [style.color] = "'blue'">Style binding</h2>
+<!-- Conditional binding -->
+<h2 [style.color]= "hasError ? 'red' : 'green'"> Conditional style binding</h2>
+<h2 [style.color]= "highlightColor"> Binded by variable</h2>
+<h2 [ngStyle]= "titleStyles"> Binded by ngStyle</h2>
+
+<!-- event binding -->
+<button (click)="onClick($event)">Greet</button>
+{{greeting}}
+
+<!-- Template reference -->
+<input #myInput type="text">
+<button (click)="logMessage(myInput.value)"> Log </button>
+
+<!-- Two Way binding -->
+<input [(ngModel)]="name" type="text">
+{{name}}
+
+<!-- ngIf -->
+<button (click)="ngIfVisable=true">True</button>
+<button (click)="ngIfVisable=false">False</button>
+<h2 *ngIf="ngIfVisable; else elseBlock"> NgIf is true</h2>
+<ng-template #elseBlock>
+  <h2> NgIf is false</h2>
+</ng-template>
+
+<!-- ngSwitch -->
+<div [ngSwitch]="switchColor">
+  <button (click)="switchColor='red'">Red</button>
+  <button (click)="switchColor='blue'">Blue</button>
+  <button (click)="switchColor='green'">Green</button>
+  <div *ngSwitchCase="'red'">You picked red</div>
+  <div *ngSwitchCase="'blue'">You picked blue</div>
+  <div *ngSwitchCase="'green'">You picked green</div>
+  <div *ngSwitchDefault>Pick again</div>
+</div>
+
+<!-- ngFor -->
+<div *ngFor="let color of NgForColors; index as j ; first as f ; last as l; odd as o">
+  <h2> {{j}} First : {{f}} Last: {{l}} {{color}}</h2> <h2> Odd : {{o}}</h2>
+</div>
+
+
+<!-- parentdata -->
+<h2>{{"Hello " + parentData}}</h2>
+<h2>{{"Hello " + parentName}}</h2>
+<button (click)="fireEvent()">Send Event</button>
+
+<!-- Pipes -->
+
+<h2>{{"Hello " + parentData | lowercase}}</h2>
+<h2>{{"Hello " + parentData | uppercase}}</h2>
+<h2>{{"Hello " + parentData | titlecase}}</h2>
+<h2>{{"Hello " + parentData | slice:3:7}}</h2>
+<h2>{{5.678 | number:'1.2-2'}}</h2>
+<h2>{{date | date:'short'}}</h2>
+<h2>{{date | date:'shortDate'}}</h2>
+<h2>{{date | date:'shortTime'}}</h2>
+
